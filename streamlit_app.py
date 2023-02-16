@@ -84,7 +84,8 @@ if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
         st.dataframe(df)  # Same as st.write(df)
 
-        Mode = st.radio("Select mode",('Overwrite','Append'))
+        Mode = 'Overwrite' 
+        #st.radio("Select mode",('Overwrite','Append'))
 
         if st.button('Upload'):
             session = Session.builder.configs(conn2).create()
