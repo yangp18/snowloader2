@@ -84,7 +84,7 @@ if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
         st.dataframe(df)  # Same as st.write(df)
 
-        Mode = 'Overwrite' 
+        Mode = 'Append' 
         #st.radio("Select mode",('Overwrite','Append'))
 
         if st.button('Upload'):
