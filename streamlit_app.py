@@ -11,7 +11,7 @@ import numpy as np
 
 st.set_page_config(page_title='CSV Snowpark Uploader',  initial_sidebar_state="auto", menu_items=None)
 ss = st.session_state
-st.write(ss)
+#st.write(ss)
 if not ss:
         ss.pressed_first_button = False
 
