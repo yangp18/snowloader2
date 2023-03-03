@@ -16,8 +16,8 @@ if not s:
 
 with st.sidebar:
     
-    SF_ACCOUNT = st.text_input('Snowflake account:')
-    SF_USR = st.text_input('Snowflake user:')
+    SF_ACCOUNT = st.text_input('Snowflake Account (AB12345.ca-central-1.aws):')
+    SF_USR = st.text_input('Snowflake USER (TYANG):')
     SF_PWD = st.text_input('Snowflake password:', type='password')
 
       
@@ -28,7 +28,9 @@ with st.sidebar:
      try:               
             session = Session.builder.configs(conn).create()
             s.pressed_first_button = True
-   
+     except ValueError:
+            st.error('One or more values is not valid. Please try again.') 
+            st.write(error)
         
             if session != '':
                 datawarehouse_list = session.sql("show warehouses;").collect()
@@ -71,9 +73,7 @@ with st.sidebar:
                                     'warehouse': datawarehouse_option,
                                 }
 
-     except ValueError:
-            st.error('One or more values is not valid. Please try again.') 
-            st.write(error)
+
 
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
