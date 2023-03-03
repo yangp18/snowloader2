@@ -9,15 +9,15 @@ import pandas as pd
 import json
 import numpy as np
 
-st.set_page_config(page_title='CSV uploader',  initial_sidebar_state="auto", menu_items=None)
+st.set_page_config(page_title='CSV Snowpark Uploader',  initial_sidebar_state="auto", menu_items=None)
 s = st.session_state
 if not s:
         s.pressed_first_button = False
 
 with st.sidebar:
     
-    SF_ACCOUNT = st.text_input('Snowflake Account (AB12345.ca-central-1.aws):')
-    SF_USR = st.text_input('Snowflake USER (TYANG):')
+    SF_ACCOUNT = st.text_input('Snowflake Account ( AB12345.ca-central-1.aws ):')
+    SF_USR = st.text_input('Snowflake USER ( TYANG ):')
     SF_PWD = st.text_input('Snowflake password:', type='password')
 
       
@@ -73,35 +73,35 @@ with st.sidebar:
                                     'warehouse': datawarehouse_option,
                                 }
 
+with container():
+    if session != '':    
+        uploaded_file = st.file_uploader("Choose a file")
+        if uploaded_file is not None:
+            if uploaded_file.type == 'text/csv':
+                #bytes_data = uploaded_file.getvalue()
 
+                # To convert to a string based IO:
+                stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
 
-uploaded_file = st.file_uploader("Choose a file")
-if uploaded_file is not None:
-    if uploaded_file.type == 'text/csv':
-        #bytes_data = uploaded_file.getvalue()
+                # To read file as string:
+                string_data = stringio.read()
 
-        # To convert to a string based IO:
-        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+                # Can be used wherever a "file-like" object is accepted:
+                df = pd.read_csv(uploaded_file)
+                st.dataframe(df)  # Same as st.write(df)
 
-        # To read file as string:
-        string_data = stringio.read()
-        
-        # Can be used wherever a "file-like" object is accepted:
-        df = pd.read_csv(uploaded_file)
-        st.dataframe(df)  # Same as st.write(df)
+                Mode = 'Append' 
+                #st.radio("Select mode",('Overwrite','Append'))
 
-        Mode = 'Append' 
-        #st.radio("Select mode",('Overwrite','Append'))
-
-        if st.button('Upload'):
-            session = Session.builder.configs(conn2).create()
-            df = session.create_dataframe(df)
-            try:
-                    if Mode == 'Overwrite':
-                        df.write.mode('Overwrite').save_as_table(upload_table)
+                if st.button('Upload'):
+                    session = Session.builder.configs(conn2).create()
+                    df = session.create_dataframe(df)
+                    try:
+                            if Mode == 'Overwrite':
+                                df.write.mode('Overwrite').save_as_table(upload_table)
+                            else:
+                                df.write.mode('append').save_as_table(upload_table)
+                    except ValueError:
+                        st.error('Upload failed')
                     else:
-                        df.write.mode('append').save_as_table(upload_table)
-            except ValueError:
-                st.error('Upload failed')
-            else:
-                st.write('File uploaded')
+                        st.write('File uploaded')
