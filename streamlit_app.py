@@ -27,14 +27,10 @@ with st.sidebar:
     conn = {'ACCOUNT': SF_ACCOUNT,'USER': SF_USR,'PASSWORD': SF_PWD}
      
      
-    if st.button('Connect') or ss.pressed_first_button:
-     try:               
+    if st.button('Connect') or ss.pressed_first_button:             
             session = Session.builder.configs(conn).create()
             ss.pressed_first_button = True
-     except ValueError:
-            st.error('One or more values is not valid. Please try again.') 
-            st.write(error)
-        
+             
             if session != '':
                 datawarehouse_list = session.sql("show warehouses;").collect()
                 datawarehouse_list =  pd.DataFrame(datawarehouse_list)
