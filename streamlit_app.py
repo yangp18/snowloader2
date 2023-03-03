@@ -28,9 +28,8 @@ with st.sidebar:
      try:               
             session = Session.builder.configs(conn).create()
             s.pressed_first_button = True
-     except ValueError:
-            st.write('One or more values is not valid. Please try again.') 
-
+   
+        
             if session != '':
                 datawarehouse_list = session.sql("show warehouses;").collect()
                 datawarehouse_list =  pd.DataFrame(datawarehouse_list)
@@ -72,7 +71,9 @@ with st.sidebar:
                                     'warehouse': datawarehouse_option,
                                 }
 
-
+     except ValueError:
+            st.error('One or more values is not valid. Please try again.') 
+            st.write(error)
 
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
