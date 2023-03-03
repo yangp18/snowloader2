@@ -10,9 +10,10 @@ import json
 import numpy as np
 
 st.set_page_config(page_title='CSV Snowpark Uploader',  initial_sidebar_state="auto", menu_items=None)
-s = st.session_state
-if not s:
-        s.pressed_first_button = False
+ss = st.session_state
+st.write(ss)
+if not ss:
+        ss.pressed_first_button = False
 
 with st.sidebar:
     
@@ -24,7 +25,7 @@ with st.sidebar:
     conn = {'ACCOUNT': SF_ACCOUNT,'USER': SF_USR,'PASSWORD': SF_PWD}
      
      
-    if st.button('Connect') or s.pressed_first_button:
+    if st.button('Connect') or ss.pressed_first_button:
      try:               
             session = Session.builder.configs(conn).create()
             s.pressed_first_button = True
