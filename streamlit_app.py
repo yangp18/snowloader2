@@ -29,7 +29,7 @@ with st.sidebar:
             session = Session.builder.configs(conn).create()
             s.pressed_first_button = True
      except ValueError:
-            st.error('One or more values is not valid. Please try again.') 
+            st.write('One or more values is not valid. Please try again.') 
 
             if session != '':
                 datawarehouse_list = session.sql("show warehouses;").collect()
