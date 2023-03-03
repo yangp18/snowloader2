@@ -73,7 +73,7 @@ with st.sidebar:
                                     'warehouse': datawarehouse_option,
                                 }
 
-with container():
+with st.container():
     if session != '':    
         uploaded_file = st.file_uploader("Choose a file")
         if uploaded_file is not None:
