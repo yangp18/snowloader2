@@ -29,7 +29,7 @@ with st.sidebar:
     if st.button('Connect') or ss.pressed_first_button:
      try:               
             session = Session.builder.configs(conn).create()
-            s.pressed_first_button = True
+            ss.pressed_first_button = True
      except ValueError:
             st.error('One or more values is not valid. Please try again.') 
             st.write(error)
