@@ -16,7 +16,7 @@ session = ''
 if not ss:
         ss.pressed_first_button = False
 
-@st.cache_data
+#@st.cache_data
 with st.sidebar:
     
     SF_ACCOUNT = st.text_input('Snowflake Account ( AB12345.ca-central-1.aws ):')
