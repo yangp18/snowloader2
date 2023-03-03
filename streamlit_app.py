@@ -25,7 +25,7 @@ with st.sidebar:
      
      
     if st.button('Connect') or s.pressed_first_button:
-     try:               
+     #try:               
             session = Session.builder.configs(conn).create()
             s.pressed_first_button = True
 
@@ -70,8 +70,8 @@ with st.sidebar:
                                     'warehouse': datawarehouse_option,
                                 }
 
-       except ValueError:
-       st.error('One or more values is not valid. Please try again.') 
+       #except ValueError:
+       #st.error('One or more values is not valid. Please try again.') 
 
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
