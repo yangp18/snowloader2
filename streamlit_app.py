@@ -19,7 +19,7 @@ if not ss:
 #@st.cache_data
 with st.sidebar:
     
-    SF_ACCOUNT = st.text_input('Snowflake Account ( AB12345.ca-central-1.aws ):')
+    SF_ACCOUNT = st.text_input('Snowflake Account ( ab12345.ca-central-1.aws ):')
     SF_USR = st.text_input('Snowflake USER ( TYANG ):')
     SF_PWD = st.text_input('Snowflake password:', type='password')
 
