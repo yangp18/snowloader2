@@ -21,10 +21,10 @@ with st.sidebar:
     
     SF_ACCOUNT = st.text_input('Snowflake Account ( ab12345.ca-central-1.aws ):')
     SF_USR = st.text_input('Snowflake USER ( TYANG ):')
-    SF_PWD = st.text_input('Snowflake password:', type='password')
+    SF_PWD = st.text_input('Snowflake authenticator:', type='password')
 
       
-    conn = {'ACCOUNT': SF_ACCOUNT,'USER': SF_USR,'PASSWORD': SF_PWD}
+    conn = {'ACCOUNT': SF_ACCOUNT,'USER': SF_USR,'authenticator': SF_PWD}
      
      
     if st.button('Connect') or ss.pressed_first_button:             
@@ -66,7 +66,7 @@ with st.sidebar:
                             conn2 = {
                                     'ACCOUNT': SF_ACCOUNT,
                                     'user': SF_USR,
-                                    'password': SF_PWD,
+                                    'authenticator': SF_PWD,
                                     'schema': schema_option,
                                     'database': database_option,
                                     'warehouse': datawarehouse_option,
