@@ -1,0 +1,46 @@
+name: snow
+channels:
+  - conda-forge
+dependencies:
+  - conda-forge::bzip2=1.0.8
+  - conda-forge::ca-certificates=2023.5.7
+  - conda-forge::libexpat=2.5.0
+  - conda-forge::libffi=3.4.2
+  - conda-forge::libsqlite=3.42.0
+  - conda-forge::libzlib=1.2.13
+  - conda-forge::openssl=3.1.1
+  - conda-forge::pip=23.1.2
+  - conda-forge::python=3.9.16
+  - conda-forge::setuptools=67.7.2
+  - conda-forge::tk=8.6.12
+  - conda-forge::tzdata=2023c
+  - conda-forge::ucrt=10.0.22621.0
+  - conda-forge::vc=14.3
+  - conda-forge::vc14_runtime=14.34.31931
+  - conda-forge::vs2015_runtime=14.34.31931
+  - conda-forge::wheel=0.40.0
+  - conda-forge::xz=5.2.6
+  - conda-forge::pandas=2.0.2
+  - pip:
+    - asn1crypto==1.5.1
+    - certifi==2023.5.7
+    - cffi==1.15.1
+    - charset-normalizer==3.1.0
+    - cryptography==40.0.2
+    - filelock==3.12.2
+    - idna==3.4
+    - numpy==1.24.3
+    - oscrypto==1.3.0
+    - pyarrow==10.0.1
+    - pycparser==2.21
+    - pycryptodomex==3.18.0
+    - pyjwt==2.7.0
+    - pyopenssl==23.2.0
+    - pytz==2023.3
+    - requests==2.31.0
+    - snowflake-connector-python==3.0.4
+    - sortedcontainers==2.4.0
+    - typing-extensions==4.6.3
+    - urllib3==1.26.16
+    - snowflake-snowpark-python==1.5.0
+prefix: C:\Users\ypeng\Anaconda3\envs\snow
